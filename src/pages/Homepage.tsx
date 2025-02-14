@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 import PageNav from "../components/PageNav";
 import styles from "./Homepage.module.css";
+import { useAuthContext } from "../contexts/AuthContext";
 
 export default function Homepage() {
+  const { user } = useAuthContext();
+  console.log("isLoggedIn", Boolean(user));
   return (
     <main className={styles.homepage}>
-      <PageNav />
+      <PageNav isLoggedIn={Boolean(user)} />
       <section>
         <h1>
           You travel the world.

@@ -3,7 +3,13 @@ import navStyles from "./PageNav.module.css";
 import { NavLink } from "react-router-dom";
 import Logo from "./Logo";
 
-const PageNav = ({ isLoginPage = false }: { isLoginPage?: boolean }) => {
+const PageNav = ({
+  isLoginPage = false,
+  isLoggedIn = false,
+}: {
+  isLoginPage?: boolean;
+  isLoggedIn?: boolean;
+}) => {
   return (
     <nav className={navStyles.nav}>
       <div>
@@ -19,7 +25,10 @@ const PageNav = ({ isLoginPage = false }: { isLoginPage?: boolean }) => {
           </li>
           {isLoginPage || (
             <li>
-              <NavLink className={navStyles.ctaLink} to={"/login"}>
+              <NavLink
+                className={navStyles.ctaLink}
+                to={isLoggedIn ? "/app" : "/login"}
+              >
                 Login
               </NavLink>
             </li>

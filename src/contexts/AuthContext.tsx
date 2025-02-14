@@ -31,6 +31,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   ) => {
     switch (action.type) {
       case "user/loggedIn":
+        console.log("action.value", action.value);
         return { ...state, user: action.value };
       case "error":
         alert(action.value);
@@ -67,7 +68,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         type: "error",
         value: new Error("Incorrect Email or Password"),
       });
-      return navigate("/");
+      return navigate("/login");
     } else {
       dispatch({ type: "user/loggedIn", value: user });
 
@@ -76,7 +77,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }
   async function logout() {
     dispatch({ type: "user/loggedOut" });
-    return navigate("/");
   }
   return (
     <AuthContext.Provider

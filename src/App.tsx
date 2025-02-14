@@ -23,7 +23,14 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route index element={<Homepage />} />
+          <Route
+            index
+            element={
+              <AuthProvider>
+                <Homepage />
+              </AuthProvider>
+            }
+          />
           <Route path="/product" element={<Product />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route
