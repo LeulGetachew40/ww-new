@@ -17,6 +17,7 @@ import Product from "./pages/Product";
 import { CitiesProvider } from "./contexts/CitiesContext";
 import { CityProvider } from "./contexts/CityContext";
 import { AuthProvider } from "./contexts/AuthContext";
+import ProtectRoute from "./pages/ProtectRoute";
 
 function App() {
   return (
@@ -45,11 +46,13 @@ function App() {
             path="/app"
             element={
               <AuthProvider>
-                <CitiesProvider>
-                  <CityProvider>
-                    <AppLayout />
-                  </CityProvider>
-                </CitiesProvider>
+                <ProtectRoute>
+                  <CitiesProvider>
+                    <CityProvider>
+                      <AppLayout />
+                    </CityProvider>
+                  </CitiesProvider>
+                </ProtectRoute>
               </AuthProvider>
             }
           >

@@ -19,7 +19,8 @@ const AuthContext = createContext<AuthProviderValueInterface | null>(null);
 export function AuthProvider({ children }: AuthProviderProps) {
   const navigate = useNavigate();
   const initialState: InitialStateInterface = {
-    user: null,
+    user: JSON.parse(localStorage.getItem("user")!),
+    // user: null,
     error: null,
   };
   const reducer = (
@@ -31,12 +32,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
   ) => {
     switch (action.type) {
       case "user/loggedIn":
-        console.log("action.value", action.value);
+        localStorage.setItem("user", JSON.stringify(action.value));
         return { ...state, user: action.value };
       case "error":
         alert(action.value);
         return { ...state, error: action.value };
       case "user/loggedOut":
+        localStorage.removeItem("user");
         return { ...state, user: null };
       default:
         throw new Error("Invalid Action");
@@ -44,6 +46,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
+
   async function checkUser(credentials: UserInterface) {
     try {
       const response = await fetch("http://localhost:9090/users");
@@ -61,8 +64,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
   }
   async function login(credentials: UserInterface) {
+    if (state.user) {
+      return navigate("/app");
+    }
     const user = await checkUser(credentials);
-    console.log("user", user);
     if (!user) {
       dispatch({
         type: "error",

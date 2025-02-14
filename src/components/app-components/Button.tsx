@@ -3,7 +3,7 @@ import btnStyles from "./Button.module.css";
 interface ButtonProps {
   children: ReactNode;
   btnClass: string;
-  handleClick: (e: MouseEvent<HTMLButtonElement>) => void;
+  handleClick?: (e: MouseEvent<HTMLButtonElement>) => void;
 }
 const Button = ({ children, btnClass, handleClick }: ButtonProps) => {
   return (

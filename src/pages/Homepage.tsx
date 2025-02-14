@@ -5,7 +5,6 @@ import { useAuthContext } from "../contexts/AuthContext";
 
 export default function Homepage() {
   const { user } = useAuthContext();
-  console.log("isLoggedIn", Boolean(user));
   return (
     <main className={styles.homepage}>
       <PageNav isLoggedIn={Boolean(user)} />

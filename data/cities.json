@@ -47,6 +47,30 @@
         "lat": 12.940444161441594,
         "lng": 34.15333558493181
       }
+    },
+    {
+      "id": "edc2",
+      "cityName": "Bahir Dar",
+      "country": "Ethiopia",
+      "emoji": "🌿",
+      "date": "Fri Feb 14 2025 20:17:04 GMT+0300 (East Africa Time)",
+      "notes": "",
+      "position": {
+        "lat": 11.574216080310618,
+        "lng": 37.37823486328126
+      }
+    },
+    {
+      "id": "dc00",
+      "cityName": "Butler District",
+      "country": "United States of America (the)",
+      "emoji": "🌿",
+      "date": "Fri Feb 14 2025 21:36:39 GMT+0300 (East Africa Time)",
+      "notes": "",
+      "position": {
+        "lat": 38.134556577054134,
+        "lng": -82.52929687500001
+      }
     }
   ]
 }

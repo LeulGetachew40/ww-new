@@ -46,8 +46,6 @@ function Form() {
         );
         const data = await response.json();
 
-        console.log("data", data);
-
         if (!data.countryCode) {
           throw new Error("Seems like you didn't click on a valid country");
         }
@@ -92,7 +90,6 @@ function Form() {
     return <Message message={"Start by clicking somewhere on the map"} />;
 
   if (geoCodingError) {
-    console.log("geoCodingError", geoCodingError);
     return <Message message={geoCodingError} />;
   }
   return (
@@ -138,14 +135,7 @@ function Form() {
       </div>
 
       <div className={styles.buttons}>
-        <Button
-          btnClass="primary"
-          handleClick={(e) => {
-            console.log("e", e);
-          }}
-        >
-          + Add
-        </Button>
+        <Button btnClass="primary">+ Add</Button>
         <BackButton />
       </div>
     </form>
